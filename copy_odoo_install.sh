@@ -41,9 +41,18 @@ fi
 # Update Server
 #--------------------------------------------------
 echo -e "\n---- Update Server ----"
-sudo apt-get update
-sudo apt-get upgrade -y
+sudo apt update -y && sudo apt upgrade -y
 sudo apt-get install libpq-dev
+
+#--------------------------------------------------
+# Python3.12
+#--------------------------------------------------
+echo -e "\n---- Python3.12 ----"
+apt install software-properties-common -y
+add-apt-repository ppa:deadsnakes/ppa
+sudo apt update -y
+#sudo apt install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev
+sudo apt install python3.12 python3.12-venv python3.12-dev
 
 #--------------------------------------------------
 # Install PostgreSQL Server
