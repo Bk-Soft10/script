@@ -56,7 +56,7 @@ sudo apt-get install git python3-cffi build-essential wget python3-dev python3-v
 
 echo -e "\n---- Install python packages/requirements ----"
 sudo -H pip3 install -r https://github.com/odoo/odoo/raw/${OE_VERSION}/requirements.txt
-if [ $PY_VENV = "True" && $PY_VENV_NAME]; then
+if [ $PY_VENV = "True" ] && [ $PY_VENV_NAME ]; then
     echo -e "* Setup VENV"
     sudo apt install python3.12 python3.12-venv python3.12-dev
     sudo su $OE_USER -c "cd $OE_HOME && python3.12 -m venv $PY_VENV_NAME"
@@ -82,7 +82,7 @@ sudo chown $OE_USER:$OE_USER /var/log/$OE_COPY_USER
 #--------------------------------------------------
 # Install ODOO
 #--------------------------------------------------
-if [ $OE_CUSTOM_REPO = "True" && $OE_REPO_VERSION && $OE_REPO_URL && $OE_REPO_EXT]; then
+if [ $OE_CUSTOM_REPO = "True" ] && [ $OE_REPO_VERSION ] && [ $OE_REPO_URL ] && [ $OE_REPO_EXT ]; then
     echo -e "* clone repo"
     sudo git clone --depth 1 --branch $OE_REPO_VERSION $OE_REPO_URL $OE_REPO_EXT/
 fi
@@ -108,7 +108,7 @@ else
 fi
 sudo su root -c "printf 'logfile = /var/log/${OE_COPY_USER}/${OE_CONFIG}.log\n' >> /etc/${OE_CONFIG}.conf"
 
-if [ $IS_CUSTOM_ADDONS = "True" && $PATH_CUSTOM_ADDONS ]; then
+if [ $IS_CUSTOM_ADDONS = "True" ] && [ $PATH_CUSTOM_ADDONS ]; then
     sudo su root -c "printf 'addons_path=${OE_HOME_EXT}/odoo/addons,${OE_HOME_EXT}/addons,${PATH_CUSTOM_ADDONS}\n' >> /etc/${OE_CONFIG}.conf"
 else
     sudo su root -c "printf 'addons_path=${OE_HOME_EXT}/odoo/addons,${OE_HOME_EXT}/addons\n' >> /etc/${OE_CONFIG}.conf"
