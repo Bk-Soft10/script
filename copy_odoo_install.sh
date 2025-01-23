@@ -1,12 +1,16 @@
 #!/bin/bash
 ################################################################################
 #-------------------------------------------------------------------------------
+# clone script repo:
+# git clone https://github.com/Bk-Soft10/script.git
+# open script directory:
+# cd script
 # Make a new file:
-# sudo nano odoo_install.sh
+# sudo nano copy_odoo_install.sh
 # Place this content in it and then make the file executable:
-# sudo chmod +x odoo_install.sh
+# sudo chmod +x copy_odoo_install.sh
 # Execute the script to install Odoo:
-# ./odoo_install
+# sudo ./copy_odoo_install.sh
 ################################################################################
 OE_COPY_USER="odoo_copy"
 OE_USER="odoo"
@@ -42,7 +46,7 @@ fi
 #--------------------------------------------------
 echo -e "\n---- Update Server ----"
 sudo apt update -y && sudo apt upgrade -y
-sudo apt install net-tools ssh libpq-dev -y
+sudo apt install net-tools ssh git libpq-dev -y
 
 #--------------------------------------------------
 # Python3.12
