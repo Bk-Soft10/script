@@ -10,8 +10,8 @@
 ################################################################################
 OE_COPY_USER="odoo_copy"
 OE_USER="odoo"
-OE_HOME="/opt/$OE_USER"
-OE_HOME_EXT="/opt/$OE_USER/${OE_USER}-server"
+OE_HOME="/$OE_USER"
+OE_HOME_EXT="/$OE_USER/${OE_USER}-server"
 OE_PORT="8017"
 OE_VERSION="17.0"
 OE_SUPERADMIN="admin@odoo"
