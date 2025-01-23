@@ -22,13 +22,18 @@ OE_REPO_VERSION="17.0"
 OE_CUSTOM_REPO="True"
 OE_REPO_URL="https://github.com/Bk-Soft10/kh_tms.git"
 OE_REPO_NAME="kh_tms"
-OE_REPO_EXT="/$OE_HOME/$OE_REPO_NAME"
+OE_REPO_EXT="$OE_HOME/$OE_REPO_NAME"
 OE_REPO_REQUIRMENT="https://github.com/Bk-Soft10/kh_tms/blob/${OE_REPO_VERSION}/requirment.txt"
 IS_CUSTOM_ADDONS="True"
 PATH_CUSTOM_ADDONS="${OE_REPO_EXT}/tms_addons,${OE_REPO_EXT}/custom_addons"
-PY_VENV="False"
+PY_VENV="True"
 PY_VENV_NAME="py_venv"
 PY_VENV_EXT="$OE_HOME/${PY_VENV_NAME}/bin/python"
+if [ $PY_VENV = "True" ] && [ PY_VENV_NAME ];then
+    PY_VENV_EXT="$OE_HOME/${PY_VENV_NAME}/bin/python"
+else
+    PY_VENV_EXT=""
+fi
 ##
 
 
