@@ -10,8 +10,8 @@
 ################################################################################
 OE_COPY_USER="odoo_copy"
 OE_USER="odoo"
-OE_HOME="/$OE_USER"
-OE_HOME_EXT="/$OE_USER/${OE_USER}-server"
+OE_HOME="/opt/$OE_USER"
+OE_HOME_EXT="/opt/$OE_USER/${OE_USER}-server"
 OE_PORT="8017"
 OE_VERSION="17.0"
 OE_SUPERADMIN="admin@odoo"
@@ -42,7 +42,7 @@ fi
 #--------------------------------------------------
 echo -e "\n---- Update Server ----"
 sudo apt update -y && sudo apt upgrade -y
-sudo apt install libpq-dev -y
+sudo apt install net-tools ssh libpq-dev -y
 
 #--------------------------------------------------
 # Python3.12
@@ -53,6 +53,15 @@ add-apt-repository ppa:deadsnakes/ppa
 sudo apt update -y
 #sudo apt install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev
 sudo apt install python3.12 python3.12-venv python3.12-dev -y
+
+
+#--------------------------------------------------
+# Update Security ports
+#--------------------------------------------------
+echo -e "\n---- Update Server ----"
+sudo ufw allow 22/tcp
+ufw allow 8009:8079/tcp
+ufw allow 8009:8079/udp
 
 #--------------------------------------------------
 # Install PostgreSQL Server
