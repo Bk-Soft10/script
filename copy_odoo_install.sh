@@ -24,11 +24,11 @@ OE_REPO_URL="https://github.com/Bk-Soft10/kh_tms.git"
 OE_REPO_NAME="kh_tms"
 OE_REPO_EXT="/$OE_HOME/$OE_REPO_NAME"
 OE_REPO_REQUIRMENT="https://github.com/Bk-Soft10/kh_tms/blob/${OE_REPO_VERSION}/requirment.txt"
-IS_CUSTOM_ADDONS="False"
+IS_CUSTOM_ADDONS="True"
 PATH_CUSTOM_ADDONS="${OE_REPO_EXT}/tms_addons,${OE_REPO_EXT}/custom_addons"
 PY_VENV="False"
 PY_VENV_NAME="py_venv"
-PY_VENV_EXT="/$OE_HOME/${PY_VENV_NAME}/bin/python"
+PY_VENV_EXT="$OE_HOME/${PY_VENV_NAME}/bin/python"
 ##
 
 
@@ -109,7 +109,7 @@ fi
 sudo su root -c "printf 'logfile = /var/log/${OE_COPY_USER}/${OE_CONFIG}.log\n' >> /etc/${OE_CONFIG}.conf"
 
 if [ $IS_CUSTOM_ADDONS = "True" ] && [ $PATH_CUSTOM_ADDONS ]; then
-    sudo su root -c "printf 'addons_path=${OE_HOME_EXT}/odoo/addons,${OE_HOME_EXT}/addons,${PATH_CUSTOM_ADDONS}\n' >> /etc/${OE_CONFIG}.conf"
+    sudo su root -c "printf 'addons_path=${OE_HOME_EXT}/odoo/addons,${OE_HOME_EXT}/addons,${PATH_CUSTOM_ADDONS},\n' >> /etc/${OE_CONFIG}.conf"
 else
     sudo su root -c "printf 'addons_path=${OE_HOME_EXT}/odoo/addons,${OE_HOME_EXT}/addons\n' >> /etc/${OE_CONFIG}.conf"
 fi
