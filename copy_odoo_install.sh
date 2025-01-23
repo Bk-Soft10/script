@@ -60,8 +60,8 @@ sudo apt install python3.12 python3.12-venv python3.12-dev -y
 #--------------------------------------------------
 echo -e "\n---- Update Server ----"
 sudo ufw allow 22/tcp
-ufw allow 8009:8079/tcp
-ufw allow 8009:8079/udp
+sudo ufw allow 8009:8079/tcp
+sudo ufw allow 8009:8079/udp
 
 #--------------------------------------------------
 # Install PostgreSQL Server
