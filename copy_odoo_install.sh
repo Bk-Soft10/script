@@ -42,7 +42,7 @@ fi
 #--------------------------------------------------
 echo -e "\n---- Update Server ----"
 sudo apt update -y && sudo apt upgrade -y
-sudo apt-get install libpq-dev
+sudo apt install libpq-dev -y
 
 #--------------------------------------------------
 # Python3.12
@@ -52,7 +52,7 @@ apt install software-properties-common -y
 add-apt-repository ppa:deadsnakes/ppa
 sudo apt update -y
 #sudo apt install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev
-sudo apt install python3.12 python3.12-venv python3.12-dev
+sudo apt install python3.12 python3.12-venv python3.12-dev -y
 
 #--------------------------------------------------
 # Install PostgreSQL Server
@@ -65,17 +65,18 @@ sudo su - $OE_USER -c "createuser -s $OE_COPY_USER" 2> /dev/null || true
 # Install Dependencies
 #--------------------------------------------------
 echo -e "\n--- Installing Python 3 + pip3 --"
-sudo apt-get install python3 python3-pip
+sudo apt-get install python3 python3-pip -y
 sudo apt-get install git python3-cffi build-essential wget python3-dev python3-venv python3-wheel libxslt-dev libzip-dev libldap2-dev libsasl2-dev python3-setuptools node-less libpng-dev libjpeg-dev gdebi -y
 
 echo -e "\n---- Install python packages/requirements ----"
 sudo -H pip3 install -r https://github.com/odoo/odoo/raw/${OE_VERSION}/requirements.txt
 if [ $PY_VENV = "True" ] && [ $PY_VENV_NAME ]; then
     echo -e "* Setup VENV"
-    sudo apt install python3.12 python3.12-venv python3.12-dev
+    sudo apt install python3.12 python3.12-venv python3.12-dev -y
     sudo su $OE_USER -c "cd $OE_HOME && python3.12 -m venv $PY_VENV_NAME"
     sudo su $OE_USER -c "cd $OE_HOME && source $PY_VENV_NAME/bin/activate && pip3 install --upgrade pip"
-    if [ $OE_CUSTOM_REPO && $OE_REPO_REQUIRMENT ];then
+    sudo su $OE_USER -c "cd $OE_HOME && source $PY_VENV_NAME/bin/activate && pip3 install -r https://github.com/odoo/odoo/raw/${OE_VERSION}/requirements.txt"
+    if [ $OE_CUSTOM_REPO ] && [ $OE_REPO_REQUIRMENT ];then
         sudo su $OE_USER -c "cd $OE_HOME && source $PY_VENV_NAME/bin/activate && pip3 install -r $OE_REPO_REQUIRMENT"
     fi
 fi
