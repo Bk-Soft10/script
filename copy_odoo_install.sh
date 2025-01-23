@@ -10,8 +10,8 @@
 ################################################################################
 OE_COPY_USER="odoo_copy"
 OE_USER="odoo"
-OE_HOME="/$OE_USER"
-OE_HOME_EXT="/$OE_USER/${OE_USER}-server"
+OE_HOME="/opt/$OE_USER"
+OE_HOME_EXT="/opt/$OE_USER/${OE_USER}-server"
 OE_PORT="8017"
 OE_VERSION="17.0"
 OE_SUPERADMIN="admin@odoo"
@@ -22,13 +22,13 @@ OE_REPO_VERSION="17.0"
 OE_CUSTOM_REPO="True"
 OE_REPO_URL="https://github.com/Bk-Soft10/kh_tms.git"
 OE_REPO_NAME="kh_tms"
-OE_REPO_EXT="/$OE_USER/$OE_REPO_NAME"
+OE_REPO_EXT="/$OE_HOME/$OE_REPO_NAME"
 OE_REPO_REQUIRMENT="https://github.com/Bk-Soft10/kh_tms/blob/${OE_REPO_VERSION}/requirment.txt"
 IS_CUSTOM_ADDONS="False"
 PATH_CUSTOM_ADDONS="${OE_REPO_EXT}/tms_addons,${OE_REPO_EXT}/custom_addons"
 PY_VENV="False"
 PY_VENV_NAME="py_venv"
-PY_VENV_EXT="/$OE_USER/${PY_VENV_NAME}/bin/python"
+PY_VENV_EXT="/$OE_HOME/${PY_VENV_NAME}/bin/python"
 ##
 
 
