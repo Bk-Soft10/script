@@ -26,9 +26,8 @@ fi
 # Update Server
 #--------------------------------------------------
 echo -e "\n---- Update Server ----"
-sudo apt-get update
-sudo apt-get upgrade -y
-sudo apt-get install libpq-dev
+sudo apt update -y && sudo apt upgrade -y
+sudo apt install libpq-dev xfonts-75dpi
 
 #--------------------------------------------------
 # Install Dependencies
@@ -42,7 +41,7 @@ sudo apt-get install git python3-cffi build-essential wget python3-dev python3-v
 # Install Wkhtmltopdf if needed
 #--------------------------------------------------
 if [ $INSTALL_WKHTMLTOPDF = "True" ]; then
-  echo -e "\n---- Install wkhtml and place shortcuts on correct place for ODOO 13 ----"
+  echo -e "\n---- Install wkhtml and place shortcuts on correct place----"
   #pick up correct one from x64 & x32 versions:
   if [ "`getconf LONG_BIT`" == "64" ];then
       _url=$WKHTMLTOX_X64
