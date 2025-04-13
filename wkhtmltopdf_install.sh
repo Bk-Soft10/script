@@ -65,5 +65,7 @@ else
   echo "Wkhtmltopdf isn't installed due to the choice of the user!"
 fi
 
+sudo apt install -y openssl build-essential libssl-dev libxrender-dev git-core libx11-dev libxext-dev libfontconfig1-dev libfreetype6-dev fontconfig
+
 echo -e "* Starting wkhtmltopdf Service"
 echo "-----------------------------------------------------------"

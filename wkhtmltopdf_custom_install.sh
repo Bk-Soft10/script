@@ -63,6 +63,6 @@ else
   sudo ln -s /usr/local/bin/wkhtmltoimage /usr/bin
   echo "Wkhtmltopdf custom installed due to the choice of the user!"
 fi
-
+sudo apt install -y openssl build-essential libssl-dev libxrender-dev git-core libx11-dev libxext-dev libfontconfig1-dev libfreetype6-dev fontconfig
 echo -e "* Starting wkhtmltopdf Service"
 echo "-----------------------------------------------------------"
