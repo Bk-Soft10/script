@@ -38,6 +38,8 @@ sudo apt install git python3-cffi build-essential wget python3-dev python3-venv 
 # Install Wkhtmltopdf if needed
 #--------------------------------------------------
 if [ $INSTALL_WKHTMLTOPDF = "True" ]; then
+  #sudo apt-get remove --purge wkhtmltopdf -y
+  #sudo apt autoremove -y
   echo -e "\n---- Install wkhtml and place shortcuts on correct place ----"
   #pick up correct one from x64 & x32 versions:
   if [ "`getconf LONG_BIT`" == "64" ];then
@@ -46,22 +48,13 @@ if [ $INSTALL_WKHTMLTOPDF = "True" ]; then
       _url=$WKHTMLTOX_X32
   fi
   sudo wget $_url
+  sudo gdebi --n `basename $_url`
   #sudo gdebi --n `basename $_url`
   sudo dpkg -i $_url
   sudo apt --fix-broken install
 
   sudo ln -s /usr/local/bin/wkhtmltopdf /usr/bin
   sudo ln -s /usr/local/bin/wkhtmltoimage /usr/bin
-else
-  sudo wget $WKHTMLTOX_URL
-  #sudo gdebi --n `basename $WKHTMLTOX_URL`
-  sudo dpkg -i $FILE_WKHTMLTOPDF
-  sudo apt --fix-broken install
-  sudo apt install ./$FILE_WKHTMLTOPDF
-
-  sudo ln -s /usr/local/bin/wkhtmltopdf /usr/bin
-  sudo ln -s /usr/local/bin/wkhtmltoimage /usr/bin
-  echo "Wkhtmltopdf custom installed due to the choice of the user!"
 fi
 sudo apt install -y openssl build-essential libssl-dev libxrender-dev git-core libx11-dev libxext-dev libfontconfig1-dev libfreetype6-dev fontconfig
 echo -e "* Starting wkhtmltopdf Service"
