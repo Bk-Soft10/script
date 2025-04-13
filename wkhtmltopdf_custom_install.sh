@@ -8,13 +8,13 @@
 # Execute the script to install Odoo:
 # sudo ./wkhtmltopdf_custom_install
 ################################################################################
-INSTALL_WKHTMLTOPDF="False"
+INSTALL_WKHTMLTOPDF="True"
 if [ "`getconf LONG_BIT`" == "64" ];then
   FILE_WKHTMLTOPDF="wkhtmltox_0.12.6.1-2.$(lsb_release -c -s)_amd64.deb"
 else
   FILE_WKHTMLTOPDF="wkhtmltox_0.12.6.1-2.$(lsb_release -c -s)_i386.deb"
 fi
-WKHTMLTOX_URL="https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/${OE_VERSION}"
+WKHTMLTOX_URL="https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/${FILE_WKHTMLTOPDF}"
 ##
 WKHTMLTOX_X64="https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox_0.12.6.1-2.$(lsb_release -c -s)_amd64.deb"
 WKHTMLTOX_X32="https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox_0.12.6.1-2.$(lsb_release -c -s)_i386.deb"
