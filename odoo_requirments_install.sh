@@ -6,11 +6,11 @@
 # open script directory:
 # cd script
 # Make a new file:
-# sudo nano copy_odoo_install.sh
+# sudo nano odoo_requirments_install.sh
 # Place this content in it and then make the file executable:
-# sudo chmod +x copy_odoo_install.sh
+# sudo chmod +x odoo_requirments_install.sh
 # Execute the script to install Odoo:
-# sudo ./copy_odoo_install.sh
+# sudo ./odoo_requirments_install.sh
 ################################################################################
 OE_USER="odoo"
 OE_HOME="/$OE_USER"
@@ -81,7 +81,6 @@ if [ $PY_VENV = "True" ] && [ $PY_VENV_NAME ]; then
     sudo su $OE_USER -c "cd $OE_HOME && python3.12 -m venv $PY_VENV_NAME"
     sudo su $OE_USER -c "cd $OE_HOME && source $PY_VENV_NAME/bin/activate && pip3 install --upgrade pip"
     sudo su $OE_USER -c "cd $OE_HOME && source $PY_VENV_NAME/bin/activate && pip3 install -r https://github.com/odoo/odoo/raw/${OE_VERSION}/requirements.txt"
-    fi
 fi
 
 echo -e "\n---- Installing nodeJS NPM and rtlcss for LTR support ----"
