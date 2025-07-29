@@ -15,7 +15,7 @@
 OE_USER="odoo"
 OE_HOME="/$OE_USER"
 OE_HOME_EXT="/$OE_USER/${OE_USER}-server"
-OE_PORT="8017"
+OE_PORT="8069"
 OE_VERSION="17.0"
 OE_SUPERADMIN="admin@odoo"
 GENERATE_RANDOM_PASSWORD="False"
@@ -59,11 +59,12 @@ sudo ufw allow 8009:8079/tcp
 sudo ufw allow 8009:8079/udp
 
 #--------------------------------------------------
-# Install PostgreSQL Server
+# Create ODOO system user
 #--------------------------------------------------
 
-echo -e "\n---- Creating the ODOO PostgreSQL User  ----"
-sudo su - $OE_USER -c "createuser -s $OE_USER" 2> /dev/null || true
+echo -e "\n---- Create ODOO system user ----"
+sudo adduser --system --quiet --shell=/bin/bash --home=$OE_HOME --gecos 'ODOO' --group $OE_USER
+sudo adduser $OE_USER sudo
 
 #--------------------------------------------------
 # Install Dependencies
