@@ -13,8 +13,8 @@
 # sudo ./odoo_requirments_install.sh
 ################################################################################
 OE_USER="odoo"
-OE_HOME="/$OE_USER"
-OE_HOME_EXT="/$OE_USER/${OE_USER}-server"
+OE_HOME="/opt/$OE_USER"
+OE_HOME_EXT="/opt/$OE_USER/${OE_USER}-server"
 OE_PORT="8069"
 OE_VERSION="17.0"
 OE_SUPERADMIN="admin@odoo"
@@ -86,6 +86,9 @@ fi
 echo -e "\n---- Installing nodeJS NPM and rtlcss for LTR support ----"
 sudo apt-get install nodejs npm -y
 sudo npm install -g rtlcss
+
+echo -e "\n---- Setting permissions on home folder ----"
+sudo chown -R $OE_USER:$OE_USER $OE_HOME/*
 
 echo "-----------------------------------------------------------"
 echo "Done! The Odoo server is ready to install Specifications:"
