@@ -107,7 +107,7 @@ if $USE_VENV; then
   fi
   echo "→ Activating virtualenv"
   # shellcheck source=/dev/null
-  source "$VENV_PATH/activate"
+  source "$VENV_PATH/bin/activate"
 fi
 
 ###############################################################################
